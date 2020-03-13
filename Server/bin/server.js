@@ -5,7 +5,7 @@ const debug = require('debug')('http');
 const WebSocketServer = require('websocket').server;
 const websocketlistener = require('../src/websocket-request')
 
-const port = normalizePort(process.env.PORT || 3000);
+const port = normalizePort(process.env.PORT || 4001);
 app.set('port', port);
 const server = http.createServer(app);
 server.listen(port);
