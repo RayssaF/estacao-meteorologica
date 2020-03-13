@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/victorbailiot/estacao.git"
+    "url": "git+https://github.com/ADS-VILHENA/estacao-meteorologica.git"
   },
   "author": "Willian Silva dos Santos",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/victorbailiot/estacao/issues"
+    "url": "https://github.com/ADS-VILHENA/estacao-meteorologica/issues"
   },
-  "homepage": "https://github.com/victorbailiot/estacao#readme",
+  "homepage": "https://github.com/ADS-VILHENA/estacao-meteorologica#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
     "debug": "^4.1.1",
