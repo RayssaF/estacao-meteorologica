@@ -3,19 +3,20 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('Marca',{
-      idMarca:{
+      id:{
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
       },
       descricao: {
         allowNull: false,
-        type: Sequelize.DataTypes.STRING,
+        type: Sequelize.STRING,
       }
     });
   },
 
   down: (queryInterface, Sequelize) => {
+    queryInterface => queryInterface.dropTable('Marca');
   }
 };
