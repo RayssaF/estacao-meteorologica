@@ -2,55 +2,53 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTabela('Estacao',{
+    return queryInterface.createTable('Evento',{
       id:{
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      keyAuth:{
+      velocidadeVento:{
+        allowNull: false,
+        type: Sequelize.FLOAT,
+      },
+      direcaoVento:{
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      preciptacaoChuva:{
+        allowNull: false,
+        type: Sequelize.FLOAT,
+      },
+      temperatura:{
         allowNull: false,
         type: Sequelize.INTEGER,
       },
-      descricao:{
+      umidade:{
         allowNull: false,
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
-      dataInstalacao:{
+      tempoInclusao:{
         allowNull: false,
         type: Sequelize.DATE,
       },
-      idModelo:{
+      statusBateria:{
         allowNull: false,
-        type: Sequelize.INTEGER,
-        references:{
-          model: 'Modelo',
-          key: 'id',
-        }
+        type: Sequelize.STRING,
       },
-      idProprietario:{
+      idEstacao:{
         allowNull: false,
         type: Sequelize.INTEGER,
         references:{
-          model: 'Proprietario',
-          key: 'id',
-        }
-      },
-      idControlador:{
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        references:{
-          model: 'Controlador',
+          model: 'Estacao',
           key: 'id',
         }
       }
-    });    
-
-
+    });
   },
 
   down: (queryInterface, Sequelize) => {
-    queryInterface => queryInterface.dropTable('Estacao');
+    queryInterface => queryInterface.dropTable('Evento');
   }
 };
