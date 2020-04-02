@@ -6,6 +6,11 @@ module.exports = {
         {
           id:1,
           idModelo:1,
+          descricao:"Controlador Teste Chrome",
+        },
+        {
+          id:2,
+          idModelo:2,
           descricao:"Controlador Teste",
         }
       ], {});
