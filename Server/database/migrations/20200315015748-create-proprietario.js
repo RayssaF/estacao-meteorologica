@@ -17,6 +17,6 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    queryInterface => queryInterface.dropTable('Proprietario');
+    return  queryInterface.dropTable('Proprietario');
   }
 };
