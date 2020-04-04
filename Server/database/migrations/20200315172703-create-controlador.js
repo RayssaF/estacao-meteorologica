@@ -1,5 +1,4 @@
 'use strict';
-
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('Controlador',{
@@ -16,11 +15,15 @@ module.exports = {
           model: 'Modelo',
           key: 'id',
         }
+      },
+      descricao:{
+        allowNull: false,
+        type: Sequelize.STRING,
       }
     });
   },
 
   down: (queryInterface, Sequelize) => {
-    queryInterface => queryInterface.dropTable('Controlador');
+    return  queryInterface.dropTable('Controlador');
   }
 };
