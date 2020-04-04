@@ -9,3 +9,8 @@ exports.create = async (evento) =>{
         console.error("Erro ao adicionar evento!" + error);
     }
 }
+
+exports.getAll = async (idEstacao) => {
+    data = await Estacao.findAll({where: {id:idEstacao}});
+    return data;
+}
