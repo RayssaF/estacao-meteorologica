@@ -11,4 +11,7 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 
+const configRoute = require('./config/config.route');
+configRoute(app);
+
 module.exports = app
