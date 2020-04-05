@@ -10,8 +10,12 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 //Carregando Models
+db.marca = require('./marca.model')(sequelize, Sequelize);
+db.modelo = require('./modelo.model')(sequelize, Sequelize);
+db.controlador = require('./controlador.model')(sequelize, Sequelize);
+db.estacao = require('./estacao.model')(sequelize, Sequelize);
+db.proprietario = require('./proprietario.model')(sequelize, Sequelize);
 db.evento = require('./evento.model')(sequelize, Sequelize);
-db.estacao = require('./estacao.model')(sequelize,Sequelize);
 
 sequelize
   .authenticate()
