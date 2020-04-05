@@ -25,3 +25,8 @@ exports.getByModelo = async (idModelo) => {
     data = await Estacao.findAll({where: {id:idModelo}});
     return data;
 }
+
+exports.getEventos = async (idEstacao) => {
+    data = await Estacao.findAll({where: {id:idEstacao}});
+    return data;
+}

@@ -17,7 +17,6 @@ db.estacao = require('./estacao.model')(sequelize, Sequelize);
 db.proprietario = require('./proprietario.model')(sequelize, Sequelize);
 db.evento = require('./evento.model')(sequelize, Sequelize);
 
-
 sequelize
   .authenticate()
   .then(() => {

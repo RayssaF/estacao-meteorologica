@@ -10,7 +10,12 @@ module.exports = {
         },
         {
           id: 2,
+          descricao: 'OEM',
+        },
+        {
+          id: 3,
           descricao: 'PLLS',
+          descricao: 'Arduino',
         }
       ], {});
   },
