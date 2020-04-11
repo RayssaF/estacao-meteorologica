@@ -2,13 +2,15 @@
 const app = require('../src/app');
 const http = require('http');
 const debug = require('debug')('http');
+const cors = require('cors');
 const WebSocketServer = require('websocket').server;
 const websocketlistener = require('../src/websocket-request');
 const { errors } = require('celebrate');
 
 const port = normalizePort(process.env.PORT || 4001);
 app.set('port', port);
-app.use(errors())
+app.use(errors());
+app.use(cors);
 const server = http.createServer(app);
 server.listen(port);
 server.on('error', onError);
