@@ -44,7 +44,10 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     Estacao.associate = function(models) {
-      models.estacao.hasMany(models.evento, {foreignKey: 'idEstacao'})
+      models.estacao.hasMany(models.evento, {foreignKey: 'idEstacao'});
+      models.estacao.belongsTo(models.modelo, {foreignKey: 'idModelo'});
+      models.estacao.belongsTo(models.controlador, {foreignKey: 'idControlador'});
+      models.estacao.belongsTo(models.proprietario, {foreignKey: 'idProprietario'});
     };
 
     return Estacao;
