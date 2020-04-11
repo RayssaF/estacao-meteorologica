@@ -1,32 +1,45 @@
-const db = require("../models");
-const Estacao = db.estacao;
+const Repository = require('../repository/estacao.repository');
 
-exports.getAll = async () => {
-    data = await Estacao.findAll();
-    return data;
-}
+exports.getAll = async (request, response) => {
+    try {
+        data = await Repository.getAll();
+        response.status(200).send(data);
+    } catch (error) {
+        console.error(error);
+        response.status(400).send(
+            {
+                message: 'Falha ao consultar dados!'
+            }
+        );
+    }
+};
 
-exports.getById = async (idEstacao) => {
-    data = await Estacao.findOne({where: {id:idEstacao}});
-    return data;
-}
+exports.getAllLastEvents = async (request, response) => {
+    try {
+        data = await Repository.getAllLastEvents();
+        response.status(200).send(data);
+    } catch (error) {
+        console.error(error);
+        response.status(400).send(
+            {
+                message: 'Falha ao consultar dados!'
+            }
+            
+        );
+    }
+};
 
-exports.getByKeyAuth = async (keyAuth) =>{
-    data = await Estacao.findOne({where: {keyAuth}});
-    return data;
-}
-
-exports.getByProprietario = async (idProprietario) => {
-    data = await Estacao.findAll({where: {id:idProprietario}});
-    return data;
-}
-
-exports.getByModelo = async (idModelo) => {
-    data = await Estacao.findAll({where: {id:idModelo}});
-    return data;
-}
-
-exports.getEventos = async (idEstacao) => {
-    data = await Estacao.findAll({where: {id:idEstacao}});
-    return data;
-}
+exports.getAllById = async (request, response) => {
+    try {
+        data = await Repository.getById(request.params.id);
+        response.status(200).send(data);
+    } catch (error) {
+        console.error(error);
+        response.status(400).send(
+            {
+                message: 'Falha ao consultar dados!'
+            }
+            
+        );
+    }
+};

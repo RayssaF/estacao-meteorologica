@@ -1,31 +1,12 @@
 const express = require('express');
 const router = express.Router();
+const estacaoController = require('../controllers/estacao.controller');
+const eventoController = require('../controllers/evento.controller')
 
-router.get('/',(request, response) =>{
-    estacoes = [{
-            id:1,
-            descricao:"Estação 01",
-            ultimoEvento:{
-                velocidadeVento:"3",
-                direcaoVento:"SW",
-                preciptacaoChuva:"2.3",
-                temperatura:"23",
-                umidade:"64"
-            }
-        },
-        {
-            id:2,
-            descricao:"Estação 02",
-            ultimoEvento:{
-                velocidadeVento:"3",
-                direcaoVento:"SW",
-                preciptacaoChuva:"2.3",
-                temperatura:"23",
-                umidade:"64"
-            }
-        }
-    ];
-    response.status(200).send(estacoes);
-});
+router.get('/',estacaoController.getAllLastEvents);
+router.get('/estacao',estacaoController.getAll);
+router.get('/estacao/:id',estacaoController.getAllById);
+router.get('/estacao/:id/eventos',eventoController.getAllByEstacao);
+
 
 module.exports = router;
