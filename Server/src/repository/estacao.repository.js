@@ -14,6 +14,11 @@ exports.getAllLastEvents = async () => {
     try {
         return this.getAll(
             {
+                attributes: [
+                    'id'
+                    ,'keyAuth'
+                    ,'descricao'
+                ],
                 include: [{
                     model:Evento,
                     order: [
@@ -31,7 +36,23 @@ exports.getAllLastEvents = async () => {
 exports.getById = async (id) => {
     try {
         console.log('id: ' + id)
-        data = await Estacao.findOne({where: {id}});
+        data = await Estacao.findOne({
+            where: {id},
+            include: [
+                {
+                    model:db.modelo,
+                    attributes: ['descricao'],
+                },
+                {
+                    model:db.controlador,
+                    attributes: ['descricao'],
+                },
+                {
+                    model:db.proprietario,
+                    attributes: ['nome']
+                }
+            ]
+        });
         return data;
     } catch (error) {
         console.error(error);

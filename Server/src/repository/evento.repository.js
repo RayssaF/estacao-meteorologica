@@ -7,6 +7,16 @@ exports.getAllByEstacao = async (idEstacao, page, pageSize) => {
         const data = {};
         data.count = await db.evento.count({ where: {idEstacao}})
         data.eventos = await db.evento.findAll({
+            attributes: [
+                'id',
+                'velocidadeVento',
+                'direcaoVento',
+                'preciptacaoChuva',
+                'temperatura',
+                'umidade',
+                'tempoInclusao',
+                'statusBateria'
+            ],
             where: {idEstacao}, 
             ...paginate({page, pageSize})
         });
