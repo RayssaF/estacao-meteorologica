@@ -1,3 +1,5 @@
+const db  = require("../models");
+
 module.exports = (sequelize, DataTypes) => {
     const Estacao = sequelize.define("Estacao",{
           keyAuth:{
@@ -40,6 +42,13 @@ module.exports = (sequelize, DataTypes) => {
         freezeTableName: true,
         timestamps: false,
     });
+
+    Estacao.associate = function(models) {
+      models.estacao.hasMany(models.evento, {foreignKey: 'idEstacao'});
+      models.estacao.belongsTo(models.modelo, {foreignKey: 'idModelo'});
+      models.estacao.belongsTo(models.controlador, {foreignKey: 'idControlador'});
+      models.estacao.belongsTo(models.proprietario, {foreignKey: 'idProprietario'});
+    };
 
     return Estacao;
 }

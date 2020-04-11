@@ -17,6 +17,12 @@ db.estacao = require('./estacao.model')(sequelize, Sequelize);
 db.proprietario = require('./proprietario.model')(sequelize, Sequelize);
 db.evento = require('./evento.model')(sequelize, Sequelize);
 
+Object.keys(db).forEach(modelName => {
+  if (db[modelName].associate) {
+    db[modelName].associate(db);
+  }
+});
+
 sequelize
   .authenticate()
   .then(() => {

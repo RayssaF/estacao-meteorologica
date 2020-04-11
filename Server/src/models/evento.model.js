@@ -1,3 +1,4 @@
+const Estacao = require('./estacao.model');
 module.exports = (sequelize, DataTypes) => {
     const Evento = sequelize.define("Evento",{
         velocidadeVento: {
@@ -22,7 +23,13 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
         },
         idEstacao: {
+            allowNull: false,
             type: DataTypes.INTEGER,
+            references:{
+              model: Estacao,
+              key: 'id',
+              deferrable: DataTypes.Deferrable.INITIALLY_IMMEDIATE
+            }
         }
     },{
         freezeTableName: true,

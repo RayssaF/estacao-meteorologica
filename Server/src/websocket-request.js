@@ -1,7 +1,7 @@
 'use strict'
 
-const eventController = require("./controllers/event.controller");
-const estacaoController = require("./controllers/estacao.controller");
+const eventRepository = require("./repository/evento.repository");
+const estacaoRepository = require("./repository/estacao.repository");
 
 const websocket = async (request) => {
     let connection = request.accept(null, request.origin);
@@ -11,9 +11,8 @@ const websocket = async (request) => {
             //GUID|Temperatura | Umidade | Pluviometria | Velocidade do vento | Direção do vento
             let arrayOfData = message.utf8Data.split("|");
             try {
-                let estacao = await estacaoController.getByKeyAuth(arrayOfData[0]);
-                console.log(`id estacao ${estacao.id}`);
-                await eventController.create({
+                let estacao = await estacaoRepository.getByKeyAuth(arrayOfData[0]);
+                let evento = {
                     keyAuth:arrayOfData[0],
                     velocidadeVento:arrayOfData[4],
                     direcaoVento:arrayOfData[5],
@@ -23,7 +22,8 @@ const websocket = async (request) => {
                     tempoInclusao:new Date(),
                     statusBateria: "",
                     idEstacao:estacao.id
-                });
+                }
+                await eventRepository.create(evento);
             } catch (error) {
                 console.error('Não foi possivel salvar o evento: ' + error);
                 
