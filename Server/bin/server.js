@@ -10,7 +10,7 @@ const { errors } = require('celebrate');
 const port = normalizePort(process.env.PORT || 4001);
 app.set('port', port);
 app.use(errors());
-app.use(cors);
+app.use(cors());
 const server = http.createServer(app);
 server.listen(port);
 server.on('error', onError);
