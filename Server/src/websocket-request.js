@@ -23,7 +23,6 @@ const websocket = async (request) => {
                     statusBateria: "",
                     idEstacao:estacao.id
                 }
-                console.log(`id estacao ${estacao.id}`);
                 await eventRepository.create(evento);
             } catch (error) {
                 console.error('Não foi possivel salvar o evento: ' + error);

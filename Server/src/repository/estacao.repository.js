@@ -35,7 +35,6 @@ exports.getAllLastEvents = async () => {
 
 exports.getById = async (id) => {
     try {
-        console.log('id: ' + id)
         data = await Estacao.findOne({
             where: {id},
             include: [
