@@ -2,9 +2,18 @@ const db  = require("../models");
 const Estacao = db.estacao;
 const Evento = db.evento;
 
-exports.getAll = async (filter) => {
+exports.getAll = async (param) => {
     try {
-        return data = await Estacao.findAll(filter);
+        if(!param){
+            param = {
+                attributes: [
+                    'id',
+                    'descricao',
+                    'dataInstalacao',
+                ],
+            }
+        }
+        return data = await Estacao.findAll(param);
     } catch (error) {
         console.error(error);
     }
@@ -16,7 +25,6 @@ exports.getAllLastEvents = async () => {
             {
                 attributes: [
                     'id'
-                    ,'keyAuth'
                     ,'descricao'
                 ],
                 include: [{
@@ -36,6 +44,11 @@ exports.getAllLastEvents = async () => {
 exports.getById = async (id) => {
     try {
         data = await Estacao.findOne({
+            attributes: [
+                'id',
+                'descricao',
+                'dataInstalacao',
+            ],
             where: {id},
             include: [
                 {
@@ -79,15 +92,6 @@ exports.getByProprietario = async (idProprietario) => {
 exports.getByModelo = async (idModelo) => {
     try {
         data = await Estacao.findAll({where: {id:idModelo}});
-        return data;
-    } catch (error) {
-        console.error(error);
-    }
-}
-
-exports.getEventos = async (idEstacao) => {
-    try {
-        data = await Estacao.findAll({where: {id:idEstacao}});
         return data;
     } catch (error) {
         console.error(error);

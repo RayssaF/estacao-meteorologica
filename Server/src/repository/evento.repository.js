@@ -18,7 +18,8 @@ exports.getAllByEstacao = async (idEstacao, page, pageSize) => {
                 'statusBateria'
             ],
             where: {idEstacao}, 
-            ...paginate({page, pageSize})
+            ...paginate({page, pageSize}),
+            order: [['tempoInclusao', 'desc']],
         });
         return data;
     } catch (error) {
