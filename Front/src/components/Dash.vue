@@ -72,8 +72,9 @@
         <tbody>
             <tr v-for="(estacao, id) in estacoes" v-bind:key="id" >
               <th scope="row">{{estacao.Evento ? new Date(estacao.Evento.tempoInclusao).toLocaleString() : '-'}}</th>
-              <router-link to="/tabelas" class="text-light">{{estacao.descricao}}</router-link>
-              <!-- <td>{{estacao.descricao}}</td> -->
+
+              <router-link :to = "{name: 'tabelas', params: {id: (id+1)}}">{{estacao.descricao}}</router-link>
+             
               <td>{{estacao.Evento ? estacao.Evento.temperatura : '-'}}º</td>
               <td>{{estacao.Evento ? estacao.Evento.umidade : '-'}} %</td>
               <td>{{estacao.Evento ? estacao.Evento.velocidadeVento : '-'}} km/h</td>
@@ -107,44 +108,49 @@ export default {
 
     getStation (){
       let qtdEventos = 0
-      return fetch('https://cryptic-cove-06248.herokuapp.com/api/v1/')
+      const options = { 
+        method: 'GET',
+        headers:{
+            'Content-Type': 'application/json',
+            'Host':'cryptic-cove-06248.herokuapp.com'
+        },
+         mode: 'cors',
+      }
+      
+      return fetch(`https://cryptic-cove-06248.herokuapp.com/api/v1/`, options)
       .then(res => res.json())
       .then((res) =>{
-        res.forEach(element => {
-          let estacao = {}
-          estacao.descricao = element.descricao
-          //Verifica se existe evento
-          if(element.Eventos[0]){
-            //Adiciona o evento existente
-            estacao.Evento = element.Eventos[0]
-            //Soma a quantidade de eventos
-            ++qtdEventos
-            //Soma as temperaturas
-            this.mediaTemperatura +=  estacao.Evento.temperatura
-            this.mediaUmidade += estacao.Evento.umidade
-            this.mediaChuva += estacao.Evento.preciptacaoChuva
-            this.mediaVelocidade += estacao.Evento.velocidadeVento
+           console.log('dados retornados com sucesso')
+           res.forEach(element => {
+            let estacao = {}
+            estacao.descricao = element.descricao
+           //Verifica se existe evento
+            if(element.Eventos[0]){
+              //Adiciona o evento existente
+              estacao.Evento = element.Eventos[0]
+              //Soma a quantidade de eventos
+              ++qtdEventos
+              //Soma as temperaturas
+              this.mediaTemperatura +=  estacao.Evento.temperatura
+              this.mediaUmidade += estacao.Evento.umidade
+              this.mediaChuva += estacao.Evento.preciptacaoChuva
+              this.mediaVelocidade += estacao.Evento.velocidadeVento
 
           }
           this.estacoes.push(estacao);
         })
 
         //Media das temperaturas
-        this.mediaTemperatura = (this.mediaTemperatura / qtdEventos)
-        this.mediaUmidade = (this.mediaUmidade / qtdEventos)
-        this.mediaChuva = (this.mediaChuva / qtdEventos)
-        this.mediaVelocidade = (this.mediaVelocidade / qtdEventos)
+          this.mediaTemperatura = (this.mediaTemperatura / qtdEventos)
+          this.mediaUmidade = (this.mediaUmidade / qtdEventos)
+          this.mediaChuva = (this.mediaChuva / qtdEventos)
+          this.mediaVelocidade = (this.mediaVelocidade / qtdEventos)
         
-        console.log('temperatura: ' + this.mediaTemperatura)
-        console.log(this.estacoes.Evento)
-      })
-      .then()
-      .catch(erro => console.log(erro))
-
-    },
-
+          console.log('temperatura: ' + this.mediaTemperatura)
      
-
+      })
+      .catch((erro) => console.log('DEU ERRO: Segue o erro ->' + erro))
+    },
     
     converter(tipoGrau){
       console.log('entrando na função de converter: ' + tipoGrau)
@@ -160,9 +166,16 @@ export default {
         this.selectestacao.Evento.temperatura = temperatura
       }
 
-    }
+    },
 
-  },
+    // Fim do methods
+
+    },
+
+     
+
+    
+    
   created (){
     this.getStation()
     
