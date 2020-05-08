@@ -55,7 +55,8 @@ export const routes = [
         }
     },
     // Rota para tablas a partir da tela incial
-    {   path : '/tabelas',
+    {   path : '/tabelas/:id',
+        name: 'tabelas',
         components:{
             default: tabelas
         }
