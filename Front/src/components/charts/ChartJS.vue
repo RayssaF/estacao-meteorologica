@@ -2,14 +2,14 @@
   <div class="animated fadeIn">
     <div class="row">
       <div class="col-sm-6">
-        <card header-text="Line Chart">
+        <card header-text="Gráfico line">
           <div class="chart-wrapper">
             <line-chart-js/>
           </div>
         </card>
       </div>
       <div class="col-sm-6">
-        <card header-text="Bar Chart" class="mb-4">
+        <card header-text="Gráfico bar" class="mb-4">
           <div class="chart-wrapper mb-4" >
             <bar-chart-js style="height:375px"/>
           </div>
