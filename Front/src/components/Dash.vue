@@ -60,17 +60,17 @@
       </div>
 
           <!-- Tabelas  -->
-      <h4 class="mt-5 card-title">Tabela das estações</h4>
+      <h3 class="mt-5 card-title">Estações</h3>
       <div class="">
           <table class="table table-striped table-dark rounded">
             <thead class="thead-dark rounded">
               <tr>
-                <th scope="col">Data do Evento</th>
+                <th scope="col">Última Atualização</th>
                 <th scope="col">Nome da Estação</th>
                 <th scope="col">Temperatura</th>
                 <th scope="col">Umidade</th>
-                <th scope="col">Velocidade</th>
-                <th scope="col">Direção</th>
+                <th scope="col">Velocidade do Vento</th>
+                <th scope="col">Direção do Vento</th>
                 <th scope="col">Chuva</th>
               </tr>
             </thead>
