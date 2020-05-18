@@ -2,18 +2,20 @@
   <div>
     <div class="mb-3">
       <h1>{{ station.descricao }}</h1>
+    </div> 
+
+    <div class="mb-3  bg-light ">
+      <h6 class="p-3 font-weight-bold text-primary card-text">Data da Instalação:  {{ new Date(station.dataInstalacao).toLocaleString() }}</h6>
+      <h6 class="p-3 font-weight-bold text-primary card-text">Proprietário: {{ station.Proprietario.nome }}</h6>
+      <h6 class="p-3 font-weight-bold text-primary card-text">Modelo: {{ station.Modelo.descricao }}</h6>
+      <h6 class="p-3 font-weight-bold text-primary card-text">Controlador: {{ station.Controlador.descricao }}</h6>
     </div>
-    <div class="mb-3 rounded border border-primary bg-light ">
-      <h6 class="p-3  text-primary card-text">Data da Instalacao:  {{ new Date(station.dataInstalacao).toLocaleString() }}</h6>
-      <h6 class="p-3  text-primary card-text">Proprietário: {{ station.Proprietario.nome }}</h6>
-      <h6 class="p-3  text-primary card-text">Modelo: {{ station.Modelo.descricao }}</h6>
-      <h6 class="p-3  text-primary card-text">Controlador: {{ station.Controlador.descricao }}</h6>
-    </div>
-    <div class="card">
-      <div class="card-body rounded border border-primary">
-          <table class="table ">
+    <div class="">
+      <div class="py-2 d-inline-block font-weight-normal"> 
+          <table class="table table-striped first-td-padding">
           <thead>
-            <tr>
+
+            <tr class="text-nowrap bd-highlight " >
               <th scope="col">Data do Evento</th>
               <th scope="col">Temperatura</th>
               <th scope="col">Umidade</th>
@@ -33,6 +35,26 @@
               <td>{{ event.direcaoVento }} </td>
               <td>{{ event.preciptacaoChuva }} MM</td>
             </tr>
+
+             <tr v-for="(event, id) in eventStation" v-bind:key="id">
+              <th scope="row">{{ new Date(event.tempoInclusao).toLocaleString() }}</th>
+              <td>{{ event.temperatura }} º</td>
+              <td>{{ event.umidade }} %</td>
+              <td>{{ event.velocidadeVento }} km/h</td>
+              <td>{{ event.direcaoVento }} </td>
+              <td>{{ event.preciptacaoChuva }} MM</td>
+            </tr>
+
+             <tr v-for="(event, id) in eventStation" v-bind:key="id">
+              <th scope="row">{{ new Date(event.tempoInclusao).toLocaleString() }}</th>
+              <td>{{ event.temperatura }} º</td>
+              <td>{{ event.umidade }} %</td>
+              <td>{{ event.velocidadeVento }} km/h</td>
+              <td>{{ event.direcaoVento }} </td>
+              <td>{{ event.preciptacaoChuva }} MM</td>
+            </tr>
+ 
+
            
           </tbody>
         </table>
