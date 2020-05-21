@@ -3,9 +3,7 @@
     <div class="card-body">
 
       <header class="mb-3">
-        
-          <h2 class="card-title">DashBoard</h2>
-        
+          <h2 class="card-title">Dashboard</h2>
       </header>
 
       <div if="eventStation">
@@ -14,9 +12,9 @@
               <div class="col-sm-3">
                 <div class="card border-danger rounded">
                   <div class="card-body">
-                    <h1 class="card-title text-danger ">{{mediaTemperatura ? mediaTemperatura : '-'}} º</h1>
-                    <p class="card-text ">Temperatura</p>
-
+                    <i class="fa fa-thermometer fa-2x" style="margin-top:10px;margin-right:15px;color:#dc3545;"></i>
+                    <b class="card-text ">Temperatura</b>
+                    <h1 class="card-title text-danger ">{{mediaTemperatura ? mediaTemperatura : '-'}} ºC</h1>
                   </div>
                 </div>
               </div>
@@ -24,20 +22,23 @@
             <div class="col-sm-3">
               <div class="card border-primary rounded">
                 <div class="card-body">
+                  <i class="fa fa-tint fa-2x" style="margin-top:10px;margin-right:15px;color:#007bff;"></i>
+                  <b class="card-text ">Umidade</b>
                   <h1 class="card-title text-primary ">{{ mediaUmidade ? mediaUmidade: '-' }} %</h1>
-                  <p class="card-text">Umidade</p>
-            
                 </div>
               </div>
             </div>
 
-          <!-- Direção do Vento -->
+          <!-- Chuva -->
             <div class="col-sm-3">
               <div class="card border-success rounded">
                 <div class="card-body">
+                  <i>
+                    <img style="width:34px;margin-top:10px;margin-right:15px;stroke:#28a745;"
+                    src="src/assets/fonts/cloud-showers-heavy-solid.svg"></img>
+                  </i>
+                  <b class="card-text">Chuva</b>
                   <h1 class="card-title text-success">{{ mediaChuva ? mediaChuva: '-' }} mm</h1>
-                  <p class="card-text">Chuva</p>
-                
                 </div>
               </div>
             </div>
@@ -46,9 +47,12 @@
             <div class="col-sm-3">
               <div class="card border-warning rounded">
                 <div class="card-body">
+                  <i>
+                    <img style="width:34px;margin-top:10px;margin-right:15px;color:#ffc107;"
+                    src="src/assets/fonts/wind-solid.svg"></img>
+                  </i>
+                  <b class="card-text">Velocidade do Vento</b>
                   <h1 class="card-title text-warning">{{ mediaVelocidade ? mediaVelocidade : '-' }} km/h</h1>
-                  <p class="card-text">Velocidade do Vento</p>
-                
                 </div>
                 </div>
               </div>
@@ -56,16 +60,17 @@
       </div>
 
           <!-- Tabelas  -->
+      <h3 class="mt-5 card-title">Estações</h3>
       <div class="">
           <table class="table table-striped table-dark rounded">
             <thead class="thead-dark rounded">
               <tr>
-                <th scope="col">Data do Evento</th>
+                <th scope="col">Última Atualização</th>
                 <th scope="col">Nome da Estação</th>
                 <th scope="col">Temperatura</th>
                 <th scope="col">Umidade</th>
-                <th scope="col">Velocidade</th>
-                <th scope="col">Direção</th>
+                <th scope="col">Velocidade do Vento</th>
+                <th scope="col">Direção do Vento</th>
                 <th scope="col">Chuva</th>
               </tr>
             </thead>
@@ -75,7 +80,7 @@
 
               <router-link :to = "{name: 'tabelas', params: {id: (id+1)}}">{{estacao.descricao}}</router-link>
              
-              <td>{{estacao.Evento ? estacao.Evento.temperatura : '-'}}º</td>
+              <td>{{estacao.Evento ? estacao.Evento.temperatura : '-'}} ºC</td>
               <td>{{estacao.Evento ? estacao.Evento.umidade : '-'}} %</td>
               <td>{{estacao.Evento ? estacao.Evento.velocidadeVento : '-'}} km/h</td>
               <td>{{estacao.Evento ? estacao.Evento.direcaoVento : '-'}}</td>
@@ -167,24 +172,16 @@ export default {
       }
 
     },
-
     // Fim do methods
-
     },
-
-     
-
-    
     
   created (){
     this.getStation()
     
   },
   computed: {
-    
    
 }
-
   
 }
 </script>
