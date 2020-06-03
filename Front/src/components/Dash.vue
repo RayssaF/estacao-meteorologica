@@ -3,7 +3,7 @@
     <div class="card-body">
 
       <header class="mb-3">
-          <h2 class="card-title">Dashboard</h2>
+          <h2 class="card-title">Média de todas as estações:</h2>
       </header>
 
       <div if="eventStation">
