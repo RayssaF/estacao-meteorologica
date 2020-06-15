@@ -38,41 +38,26 @@
               <td>{{ event.preciptacaoChuva }} MM</td>
             </tr>
 
-             <tr v-for="(event, id) in eventStation" v-bind:key="id">
-              <th scope="row">{{ new Date(event.tempoInclusao).toLocaleString() }}</th>
-              <td>{{ event.temperatura }} º</td>
-              <td>{{ event.umidade }} %</td>
-              <td>{{ event.velocidadeVento }} km/h</td>
-              <td>{{ event.direcaoVento }} </td>
-              <td>{{ event.preciptacaoChuva }} MM</td>
-            </tr>
-
-             <tr v-for="(event, id) in eventStation" v-bind:key="id">
-              <th scope="row">{{ new Date(event.tempoInclusao).toLocaleString() }}</th>
-              <td>{{ event.temperatura }} º</td>
-              <td>{{ event.umidade }} %</td>
-              <td>{{ event.velocidadeVento }} km/h</td>
-              <td>{{ event.direcaoVento }} </td>
-              <td>{{ event.preciptacaoChuva }} MM</td>
-            </tr>
  
           </tbody>
         </table>
-            <div>
+         
+      </div>
+    </div>
+     <div>
           <label class="switch">
-             <input type="checkbox"> 
+             <input type="checkbox">
              <span class="slider round"></span> 
          </label>
            <label for="" class="label">Mudar para fahrenheit</label>
           </div>
-         
-      </div>
-    </div>
-   
+    
 </div>
 </template>
 
 <script>
+
+
 export default {
   data: () => {
     return {
@@ -135,12 +120,13 @@ export default {
     this.getStation()
   },
   computed: {
-    
    
   }
-
-  
 }
+ 
+
+
+
 </script>
 
 <style >
